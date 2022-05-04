@@ -3,8 +3,9 @@
 GUI application for WSL.
 
 #### TODO
-- [ ] Export OS
-
-- [ ] Import OS
+- [X] Coffee
+- [ ] Change WSL version for distro
+- [ ] Export distro
+- [ ] Import distro
 
 ![mainlogin](https://imgur.com/VLzCqnp.png)
