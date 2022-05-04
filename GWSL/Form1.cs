@@ -10,14 +10,13 @@ using System.Collections.Generic;
 
 namespace GWSL
 {
-    //SHOW RUNNING , Maybe fast command no progress bar
     public partial class Form1 : Form
     {
         WSL manager = null;
         Form2 handler = null;
         Distro currOs = null;
-        [DllImport(@"gwslgo.dll", EntryPoint = "generateReport", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
-        public static extern IntPtr generateReport();
+        [DllImport(@"gwslgo.dll", EntryPoint = "generateOutput", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
+        public static extern IntPtr generateOutput();
         public Form1()
         {
             InitializeComponent();
@@ -99,17 +98,6 @@ namespace GWSL
                 handler.Show(title, disc);
             }
             backgroundWorker1.RunWorkerAsync(argument: cmd);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void updateWSLReport()
@@ -247,8 +235,8 @@ namespace GWSL
         private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
         {
             string input = (string)e.Argument;
-            generateReport();
-            string data = Marshal.PtrToStringAnsi(generateReport());
+            generateOutput();
+            string data = Marshal.PtrToStringAnsi(generateOutput());
             Output rep = JsonConvert.DeserializeObject<Output>(data);
             manager = new WSL(rep, listView1);
         }

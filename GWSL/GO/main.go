@@ -10,7 +10,7 @@ import (
 	"regexp"
 )
 
-type Report struct {
+type Output struct {
     Ready bool
 	Wstwo bool
 	Installed string
@@ -19,10 +19,10 @@ type Report struct {
 }
 
 func main() {
-	generateReport()
+	generateOutput()
 }
 
-func getReportToString(report *Report) string{
+func getOutputToString(report *Output) string{
     b, err := json.Marshal(report)
     if err != nil {
         return "error"
@@ -30,18 +30,18 @@ func getReportToString(report *Report) string{
     return string(b)
 }
 
-//export generateReport
-func generateReport() *C.char{	
+//export generateOutput
+func generateOutput() *C.char{	
 	ready := checkInstalled()
 	wstwoready := checkWSLTWO()
-	rep := Report{Ready:ready, Wstwo:wstwoready, Installed:"", Online:"", Running:"" }
+	rep := Output{Ready:ready, Wstwo:wstwoready, Installed:"", Online:"", Running:"" }
 	if (ready){
 		rep.Installed = runCommand("wsl -l -v")
 		rep.Online = runCommand("wsl --list --online")
 		rep.Running = runCommand("wsl -l --running")
 	}
 	//repString := fmt.Sprintf("%+v\n", rep)
-	repString := getReportToString(&rep)	
+	repString := getOutputToString(&rep)	
 	return C.CString(fmt.Sprintf("%s\n", repString))
 }
 
@@ -81,8 +81,6 @@ func checkWSLTWO() bool{
 	}
 	return true
 }
-
-
 
 //export runCommand
 func runCommand(input string) string {

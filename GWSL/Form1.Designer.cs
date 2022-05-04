@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -62,7 +63,7 @@
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
             this.listView1.Scrollable = false;
-            this.listView1.Size = new System.Drawing.Size(219, 338);
+            this.listView1.Size = new System.Drawing.Size(219, 332);
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -210,11 +211,11 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.Location = new System.Drawing.Point(123, 353);
+            this.button2.Location = new System.Drawing.Point(123, 347);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(108, 23);
             this.button2.TabIndex = 3;
-            this.button2.Text = "KILL ALL";
+            this.button2.Text = "Shutdown";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -225,7 +226,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(12, 353);
+            this.button4.Location = new System.Drawing.Point(12, 347);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(108, 23);
             this.button4.TabIndex = 11;
@@ -242,10 +243,10 @@
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "GWSL";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
