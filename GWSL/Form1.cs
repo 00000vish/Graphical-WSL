@@ -374,8 +374,8 @@ namespace GWSL
                     string[] itemSafe = item.Split(" ");                   
                     Distro tempOs = new Distro();
                     tempOs.cmdName = itemSafe[0];
-                    var regex = new Regex(Regex.Escape(tempOs.cmdName));
-                    tempOs.name = regex.Replace(item, tempOs.cmdName, 1);
+                    var regex = new Regex(Regex.Escape(item.Trim().ReplaceLineEndings().Split(" ")[0]));
+                    tempOs.name = regex.Replace(item.ToString().Trim(), "", 1).Trim();
                     tempOs.installed = false;                    
                     if(!installed.Exists(x => x.cmdName == tempOs.cmdName)){
                         ListViewItem temp = new ListViewItem(tempOs.name);
